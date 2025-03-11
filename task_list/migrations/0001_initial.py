@@ -7,32 +7,52 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Tag',
+            name="Tag",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=100, unique=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=100, unique=True)),
             ],
             options={
-                'ordering': ['name'],
+                "ordering": ["name"],
             },
         ),
         migrations.CreateModel(
-            name='Task',
+            name="Task",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('content', models.TextField()),
-                ('created_task', models.DateTimeField(auto_now_add=True)),
-                ('deadline', models.DateTimeField(blank=True, null=True)),
-                ('is_done', models.BooleanField(default=False)),
-                ('tags', models.ManyToManyField(blank=True, related_name='tasks', to='task_list.tag')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("content", models.TextField()),
+                ("created_task", models.DateTimeField(auto_now_add=True)),
+                ("deadline", models.DateTimeField(blank=True, null=True)),
+                ("is_done", models.BooleanField(default=False)),
+                (
+                    "tags",
+                    models.ManyToManyField(
+                        blank=True, related_name="tasks", to="task_list.tag"
+                    ),
+                ),
             ],
             options={
-                'ordering': ['is_done', '-created_task'],
+                "ordering": ["is_done", "-created_task"],
             },
         ),
     ]

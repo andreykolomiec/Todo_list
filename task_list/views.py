@@ -4,18 +4,18 @@ from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views import generic
 
-from task_list.models import Task, Tag
+from task_list.models import Tag, Task
 
 
 class TaskListView(generic.ListView):
     model = Task
-    context_object_name = 'task_list'
-    template_name = 'task_list/task_list.html'
+    context_object_name = "task_list"
+    template_name = "task_list/task_list.html"
 
 
 class TaskDetailView(generic.DetailView):
     model = Task
-    template_name = 'task_list/task_detail.html'
+    template_name = "task_list/task_detail.html"
 
 
 class TaskCreateView(generic.CreateView):
@@ -39,7 +39,7 @@ class TaskDeleteView(generic.DeleteView):
 
 class TagListView(generic.ListView):
     model = Tag
-    context_object_name = 'tags'
+    context_object_name = "tags"
     template_name = "task_list/tags.html"
 
 

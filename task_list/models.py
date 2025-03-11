@@ -1,10 +1,11 @@
 from django.db import models
 
+
 class Tag(models.Model):
     name = models.CharField(max_length=100, unique=True)
 
     class Meta:
-        ordering = ['name']
+        ordering = ["name"]
 
     def __str__(self):
         return self.name
@@ -21,7 +22,7 @@ class Task(models.Model):
         ordering = ["is_done", "-created_task"]
 
     def __str__(self):
-        tags_str = ", ".join(self.tags.values_list('name', flat=True))
+        tags_str = ", ".join(self.tags.values_list("name", flat=True))
         return (
             f"{self.content},"
             f"{'Done' if self.is_done else 'Not Done}'},"
